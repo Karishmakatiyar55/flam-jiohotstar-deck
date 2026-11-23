@@ -109,7 +109,6 @@ function buildRun(){
     $$("#run button").forEach(function(x){ x.classList.toggle("cur", x===b); });
     demoHash = b.dataset.h; if(!demoFr) mountDemo(); else demoFr.src = DEMO + demoHash;
   }); });
-  $("#demoUrl").textContent = DEMO.replace(/^https?:\/\//,"").replace(/\/$/,"");
   $("#demoNew").href = DEMO; $(".dside .big").textContent = DEMO_SLOTS;
 }
 function fitDemo(){ var p = $("#pscr"); if(!demoFr || !p.clientWidth) return; var k = p.clientWidth/390; demoFr.style.transform = "scale("+k+")"; demoFr.style.height = Math.ceil(p.clientHeight/k)+"px"; }

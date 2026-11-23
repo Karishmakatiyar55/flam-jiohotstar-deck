@@ -552,6 +552,21 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 @media (max-width:980px){.itr,.trio{grid-template-columns:minmax(0,1fr)}.mrow{grid-template-columns:54px minmax(0,1fr)}.mrow em{grid-column:2}}
 @media (max-height:720px){#s7 .in{gap:9px}.itr{padding-top:9px;padding-bottom:9px}.sigs div{padding:5px 9px}.coh div{height:44px}}
 
+/* 03: every Flicks slot is a stack of variants */
+.fx .blk{box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(90,44,30,.45),4px -4px 0 -1px #c98f77,4px -4px 0 0 rgba(60,28,18,.9),8px -8px 0 -2px #9a5f48,8px -8px 0 -1px rgba(60,28,18,.9),0 8px 14px -5px rgba(0,0,0,.95)}
+.fx .mk{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),4px -3px 0 -1px #c98f77,4px -3px 0 0 rgba(60,28,18,.9),8px -6px 0 -2px #9a5f48,8px -6px 0 -1px rgba(60,28,18,.9),0 6px 10px -3px rgba(0,0,0,.95)}
+.v3{position:absolute;left:50%;top:calc(100% + 16px);transform:translateX(-50%);display:flex;gap:4px;text-decoration:none}
+.mk .v3{top:calc(50% + clamp(56px,8.4vh,84px)/2 + 7px)}
+.v3 i{width:7px;height:7px;border-radius:50%;background:#3a2a24;box-shadow:inset 0 1px 1px rgba(0,0,0,.8),0 1px 0 rgba(255,220,202,.08);animation:vdot 3.6s infinite}
+.v3 i:nth-child(2){animation-delay:1.2s}.v3 i:nth-child(3){animation-delay:2.4s}
+@keyframes vdot{0%,30%{background:#F2C4B3;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(60,28,18,.9)}36%,100%{background:#3a2a24;box-shadow:inset 0 1px 1px rgba(0,0,0,.8),0 1px 0 rgba(255,220,202,.08)}}
+.fx .blk span{top:calc(100% + 28px)}
+.fx .mk span{top:calc(50% + clamp(56px,8.4vh,84px)/2 + 19px)}
+.fx .blk:first-child .v3{left:0;transform:none}
+.axis{margin-top:clamp(28px,4vh,40px)}
+.pill.key{gap:9px;color:var(--tx)}
+.v3.st{position:static;transform:none}
+
 </style>
 </head>
 <body>
@@ -649,13 +664,13 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
     <div class="head">
       <div class="eb" data-r style="--i:0"><b>01</b>More formats on the same content</div>
       <h2 class="h" data-r style="--i:1">Same episode. More to sell.</h2>
-      <div class="sub" data-r style="--i:2">Nothing is replaced. Pre-roll, mid-roll, banner and L-band stay as sold. <b>Flicks add interactive slots on top.</b></div>
+      <div class="sub" data-r style="--i:2">Nothing is replaced. Pre-roll, mid-roll, banner and L-band stay as sold. <b>Flicks add slots on top, and each one holds several variants to explore.</b></div>
     </div>
     <div class="two">
       <div class="tl" data-r style="--i:3">
         <div class="tlwrap">
           <div class="tlrow">
-            <div class="lab"><b>Sold today</b>Stays as it is</div>
+            <div class="lab"><b>Sold today</b>One ad per slot</div>
             <div class="trk2">
               <div class="blk" style="left:0;width:4%"><span style="left:0;transform:none">Pre-roll</span></div>
               <div class="blk" style="left:36%;width:3.5%"><span>Mid-roll</span></div>
@@ -664,14 +679,14 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
             </div>
           </div>
           <div class="tlrow fx">
-            <div class="lab"><b>With Flicks</b>Added on top</div>
+            <div class="lab"><b>With Flicks</b>Several variants per slot</div>
             <div class="trk2">
-              <div class="blk" style="left:0;width:4%;animation-delay:.2s"><span style="left:0;transform:none">Pre-roll + companion</span></div>
-              <div class="mk" style="left:21%;animation-delay:2.5s"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8zM9 8a3 3 0 016 0"/></svg><span>Shop the look</span></div>
-              <div class="blk" style="left:36%;width:3.5%;animation-delay:4.5s"><span>Mid-roll</span></div>
-              <div class="mk" style="left:52%;animation-delay:6.2s"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span>Pause</span></div>
-              <div class="blk" style="left:68%;width:3.5%;animation-delay:8.3s"><span>Mid-roll</span></div>
-              <div class="mk" style="left:86%;animation-delay:10.3s"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8zM9 8a3 3 0 016 0"/></svg><span>Shop the look</span></div>
+              <div class="blk" style="left:0;width:4%;animation-delay:.2s"><u class="v3"><i></i><i></i><i></i></u><span style="left:0;transform:none">Pre-roll + companion</span></div>
+              <div class="mk" style="left:21%;animation-delay:2.5s"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8zM9 8a3 3 0 016 0"/></svg><u class="v3"><i></i><i></i><i></i></u><span>Shop the look</span></div>
+              <div class="blk" style="left:36%;width:3.5%;animation-delay:4.5s"><u class="v3"><i></i><i></i><i></i></u><span>Mid-roll</span></div>
+              <div class="mk" style="left:52%;animation-delay:6.2s"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><u class="v3"><i></i><i></i><i></i></u><span>Pause</span></div>
+              <div class="blk" style="left:68%;width:3.5%;animation-delay:8.3s"><u class="v3"><i></i><i></i><i></i></u><span>Mid-roll</span></div>
+              <div class="mk" style="left:86%;animation-delay:10.3s"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8zM9 8a3 3 0 016 0"/></svg><u class="v3"><i></i><i></i><i></i></u><span>Shop the look</span></div>
             </div>
           </div>
           <div class="tlin"><div class="head2"></div></div>
@@ -679,7 +694,7 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
         <div class="tlrow"><div></div><div class="axis"><span style="left:0">0:00</span><span style="left:50%">15:00</span><span style="left:100%">30:00</span></div></div>
         <div class="legend">
           <span class="pill"><i style="width:14px;height:5px;border-radius:3px;background:rgba(205,191,184,.4)"></i>Banner and L-band</span>
-          <span class="pill hot">Interactive breaks</span><span class="pill hot">Shop the look</span><span class="pill hot">Pause ad</span><span class="pill hot">Tadka micro-dramas</span>
+          <span class="pill key"><u class="v3 st"><i></i><i></i><i></i></u>One slot, several variants to swap</span><span class="pill hot">Interactive breaks</span><span class="pill hot">Shop the look</span><span class="pill hot">Pause ad</span><span class="pill hot">Tadka micro-dramas</span>
         </div>
       </div>
       <div class="idx" data-r style="--i:4">
@@ -815,7 +830,6 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
         <div class="big num">25</div>
         <p>Flicks placements in a working replica of the app: ad breaks, shop the look, Tadka, banners, search.</p>
         <p>Pick a flow on the left, or use <b style="color:var(--acc);font-weight:600">Ad slots</b> inside the phone.</p>
-        <div class="url" id="demoUrl"></div>
       </div>
     </div>
   </div></div>
@@ -1029,7 +1043,6 @@ function buildRun(){
     $$("#run button").forEach(function(x){ x.classList.toggle("cur", x===b); });
     demoHash = b.dataset.h; if(!demoFr) mountDemo(); else demoFr.src = DEMO + demoHash;
   }); });
-  $("#demoUrl").textContent = DEMO.replace(/^https?:\/\//,"").replace(/\/$/,"");
   $("#demoNew").href = DEMO; $(".dside .big").textContent = DEMO_SLOTS;
 }
 function fitDemo(){ var p = $("#pscr"); if(!demoFr || !p.clientWidth) return; var k = p.clientWidth/390; demoFr.style.transform = "scale("+k+")"; demoFr.style.height = Math.ceil(p.clientHeight/k)+"px"; }
