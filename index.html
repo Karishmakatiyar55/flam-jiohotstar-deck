@@ -842,8 +842,8 @@ var FLICKS = {
   neck:  {id:"ikutv6", r:9/16},
   merc:  {tag:"https://native-ads.appless.workers.dev/6a9bc07393e71f3ec9b12c81_i3pdeq/ad.js", r:1},
   sony:  {tag:"https://native-ads-dev.appless.workers.dev/6a96c6969e74536944c4167f_dj5rq6/ad.js", r:1},
-  cayman:{tag:"https://native-ads.appless.workers.dev/6aa776159846b99b24d49ce4_m1ugyq/ad.js", r:1}   // Cayman Islands, tag as used in flicks-social-apps
-  ,amex: {tag:"https://native-ads-dev.appless.workers.dev/f41m4u/ad.js", r:1,     // American Express, from flicks-ad-tags
+  cayman:{tag:"https://native-ads.appless.workers.dev/6aa776159846b99b24d49ce4_m1ugyq/ad.js", r:1, muteTop:true}   // Cayman Islands, tag as used in flicks-social-apps
+  ,amex: {tag:"https://native-ads-dev.appless.workers.dev/f41m4u/ad.js", r:1, muteTop:true,     // American Express, from flicks-ad-tags
           pre:'<script>window.AD_CONFIG=window.AD_CONFIG||{};window.AD_CONFIG.dsp="house";window.AD_CONFIG.clickTracker={"mode":"exit","template":""};<\/script>\n'}
 };
 // Advertiser categories on slide 5. flick = key above; without one the tile shows what would swap.
@@ -886,10 +886,12 @@ function ic(n,s){ return '<svg width="'+(s||22)+'" height="'+(s||22)+'" viewBox=
 
 /* ---------- live Flicks: only ever mounted on the slide in view ---------- */
 var blobs = {};
+// The Flick's own sound button sits bottom-right, over the third option on some Flicks. muteTop moves it to the top-right.
+var MUTE_TOP = '<script>(function(){var n=0,t=setInterval(function(){try{var p=document.querySelector("vertex-player"),r=p&&p.shadowRoot;if(r&&!r.querySelector("style[data-deck]")){var s=document.createElement("style");s.setAttribute("data-deck","");s.textContent="#vp-container>button[style*=\\"bottom: 12px\\"]{bottom:auto!important;top:12px!important}";r.appendChild(s);clearInterval(t)}}catch(e){}if(++n>240)clearInterval(t)},250)})();<\/script>\n';
 function flickSrc(f){
   if(f.id) return "https://flicks.flamapp.live/"+f.id+"/?embed=1&u="+encodeURIComponent(PU);
   if(!blobs[f.tag]){
-    var html = '<!doctype html>\n<meta charset=utf-8>\n<meta name=ad.orientation content=portrait,landscape>\n<style>html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden}</style>\n<script>var ExitApi=window.ExitApi||{exit:function(){}},clickTag="${CLICK_URL_UNESC}";<\/script>\n'+(f.pre||'')+'<script src='+f.tag+'><\/script>';
+    var html = '<!doctype html>\n<meta charset=utf-8>\n<meta name=ad.orientation content=portrait,landscape>\n<style>html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden}</style>\n<script>var ExitApi=window.ExitApi||{exit:function(){}},clickTag="${CLICK_URL_UNESC}";<\/script>\n'+(f.pre||'')+(f.muteTop?MUTE_TOP:'')+'<script src='+f.tag+'><\/script>';
     try{ blobs[f.tag] = URL.createObjectURL(new Blob([html],{type:"text/html"})); }catch(e){ blobs[f.tag] = "about:blank"; }
   }
   return blobs[f.tag];
