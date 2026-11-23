@@ -74,7 +74,7 @@ function flickSrc(f){
 function mountFlick(el,key){
   unmount(el); var f = FLICKS[key]; if(!f) return;
   var fr = document.createElement("iframe");
-  fr.title = "Live Flick"; fr.allow = "autoplay; fullscreen; encrypted-media"; fr.src = flickSrc(f);
+  fr.title = "Flick"; fr.allow = "autoplay; fullscreen; encrypted-media"; fr.src = flickSrc(f);
   el.appendChild(fr);
 }
 function unmount(el){ $$("iframe",el).forEach(function(f){ try{ f.src = "about:blank"; }catch(e){} f.remove(); }); }
@@ -84,7 +84,7 @@ function silence(sl){ $$(".fk",sl).forEach(unmount); }   // removing the frame i
 var catKey = START_CAT;
 function buildCats(){
   $("#cats").innerHTML = CATS.map(function(c){
-    return '<button class="cat" data-k="'+c.k+'">'+ic(c.ic)+'<em class="'+(c.flick?"lv":"")+'">'+(c.flick?"Live":"Next")+'</em><b>'+c.t+'</b><span>'+c.d+'</span></button>';
+    return '<button class="cat" data-k="'+c.k+'">'+ic(c.ic)+'<em><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7V5z"/></svg></em><b>'+c.t+'</b><span>'+c.d+'</span></button>';
   }).join("");
   $$("#cats .cat").forEach(function(b){ b.addEventListener("click",function(){ catKey = b.dataset.k; showCat(true); }); });
 }
@@ -92,7 +92,7 @@ function showCat(live){
   var c = CATS.filter(function(x){return x.k===catKey})[0], box = $("#catFk");
   $$("#cats .cat").forEach(function(b){ b.classList.toggle("cur", b.dataset.k===catKey); });
   unmount(box); var old = $(".idea",box); if(old) old.remove();
-  if(c.flick){ $("#catCap").innerHTML = '<span class="dot live"></span>'+c.t+' · '+c.cap+' · live'; if(live) mountFlick(box,c.flick); }
+  if(c.flick){ $("#catCap").innerHTML = '<i>Now playing</i>'+c.t+' · '+c.cap; if(live) mountFlick(box,c.flick); }
   else { var d = document.createElement("div"); d.className = "idea"; d.innerHTML = '<small>'+c.t+' · to build</small><b>'+c.idea[0]+'</b><span>'+c.idea[1]+'</span>'; box.appendChild(d); $("#catCap").textContent = c.t+" · Flick to build"; }
 }
 
