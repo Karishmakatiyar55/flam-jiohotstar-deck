@@ -213,6 +213,47 @@ input{font:inherit;color:inherit}
 .fact b{font-size:clamp(15px,1.15vw,19px);font-weight:500;color:var(--tx);text-wrap:balance}
 .fact span{font-size:clamp(12.5px,.92vw,14.5px);line-height:1.45;color:#9C8D86;text-wrap:pretty}
 
+#s4 .h{font-size:clamp(26px,3vw,54px)}
+#s4 .in{gap:clamp(14px,2.6vh,32px)}
+#s4 .node{gap:clamp(8px,1.3vh,14px);padding:clamp(12px,1.3vw,20px);justify-content:center}
+.vis{height:clamp(64px,10.5vh,118px);display:flex;align-items:center;justify-content:center}
+.vis .scene{height:100%;aspect-ratio:16/9;max-width:100%}
+.scene .box{display:flex;align-items:center;justify-content:center;color:rgba(250,250,250,.9)}
+.scene .box svg{width:46%;max-width:22px;height:auto}
+.brands{display:flex;gap:5px;flex-shrink:0}
+.brands i{width:20px;height:20px;border-radius:50%;border:1px solid rgba(242,196,179,.3);background:#2a211e;animation:seq 4.8s infinite}
+.brands i:nth-child(1){animation-delay:2.2s}.brands i:nth-child(2){animation-delay:2.8s}.brands i:nth-child(3){animation-delay:3.4s}
+.tile{flex-shrink:0;width:34px;height:34px;border-radius:9px;border:1px solid rgba(242,196,179,.35);background:#2a211e;display:flex;align-items:center;justify-content:center;color:var(--acc)}
+.tile svg{width:16px;height:16px}
+.tile.sm{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#7a3a24,#3a1a12)}
+.plus{font-weight:500;color:var(--mut)}
+.vis .ifl{align-self:center;flex-shrink:0}
+#s4 .out .fk{width:clamp(104px,min(11vw,19vh),190px)}
+.smb{display:grid;grid-template-columns:minmax(0,.9fr) auto minmax(0,1.25fr);gap:clamp(18px,2.6vw,48px);align-items:center;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--line)}
+.smbt{display:flex;flex-direction:column;gap:7px;min-width:0}
+.smbt>b{font-size:clamp(19px,1.7vw,30px);font-weight:500;letter-spacing:-.02em;color:var(--tx);text-wrap:balance}
+.smbt>span{font-size:clamp(12.5px,.95vw,15px);line-height:1.45;color:#9C8D86;text-wrap:pretty}
+.dashw{width:clamp(250px,25vw,380px);border-radius:14px;border:1px solid var(--line2);background:var(--card);overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.dbar{display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid var(--line);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.dbar i{width:6px;height:6px;border-radius:50%;background:rgba(242,196,179,.3)}
+.dbar span{margin-left:6px}
+.dwork{display:flex;align-items:center;gap:7px;padding:clamp(8px,1.3vh,12px) 12px}
+.vt{position:relative;flex-shrink:0;width:clamp(26px,2.4vw,36px);aspect-ratio:9/14;border-radius:7px;border:1px solid rgba(242,196,179,.3);background:linear-gradient(160deg,#5a3626,#1c0f0b);display:flex;align-items:flex-end;justify-content:center;color:var(--acc)}
+.vt svg{position:absolute;left:50%;top:42%;width:13px;height:13px;transform:translate(-50%,-50%)}
+.vt em{font-style:normal;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,250,.75);padding-bottom:3px}
+.vts{display:flex;gap:5px}
+.vt.v1{background:linear-gradient(160deg,#8a4a30,#2c1611);animation:vpop 4.8s infinite}
+.vt.v2{background:linear-gradient(160deg,#7a3046,#2c1118);animation:vpop 4.8s .5s infinite}
+.vt.v3{background:linear-gradient(160deg,#6a5a2a,#2c2411);animation:vpop 4.8s 1s infinite}
+@keyframes vpop{0%,30%{opacity:.25;transform:scale(.9)}42%,92%{opacity:1;transform:scale(1)}100%{opacity:.25;transform:scale(.9)}}
+.orb{flex-shrink:0;padding:6px 10px;border-radius:999px;background:radial-gradient(circle at 30% 30%,#F2C4B3,#C97E63 60%,#7a3a24);color:#1a1210;font-size:11px;font-weight:700;letter-spacing:.04em;animation:orbg 3.2s ease-in-out infinite}
+@keyframes orbg{0%,100%{box-shadow:0 0 0 0 rgba(227,156,134,.5)}50%{box-shadow:0 0 0 7px rgba(227,156,134,0)}}
+.dprompt{display:flex;align-items:center;gap:3px;margin:0 12px 10px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:rgba(15,15,15,.5);font-size:11.5px;color:var(--sec);white-space:nowrap;overflow:hidden}
+.dprompt i{width:1px;height:12px;background:var(--acc);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.smbr .lrow:first-child{border-top:0}
+.smbr .lrow{padding:clamp(5px,1vh,9px) 0}
+@media (max-width:980px){.smb{grid-template-columns:minmax(0,1fr)}.dashw{width:100%}}
 /* ================= 05 advertisers ================= */
 .adv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,3.2vw,60px);align-items:center}
 .cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,.8vw,12px)}
@@ -337,7 +378,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   #dlabel{display:none}
 }
 @media (max-width:560px){.cols{grid-template-columns:minmax(0,1fr)}.col{padding-left:0;border-left:0}}
-@media (max-height:720px){.in{padding-top:82px;padding-bottom:76px;gap:14px}.cat span{min-height:0}.cat{padding:10px 12px}.viz{height:48px}#s7 .in{padding-top:78px;padding-bottom:72px;gap:10px}table.m td{padding-top:3px;padding-bottom:3px}.nb{height:25px}.ix .z{font-size:clamp(56px,6.4vw,110px)}}
+@media (max-height:720px){#s4 .in{gap:10px}#s4 .out .fk{width:88px}#s4 .out .pill{font-size:11px;padding:4px 9px}.smb{padding-top:10px}.dprompt{margin-bottom:8px;padding:4px 10px}.in{padding-top:82px;padding-bottom:76px;gap:14px}.cat span{min-height:0}.cat{padding:10px 12px}.viz{height:48px}#s7 .in{padding-top:78px;padding-bottom:72px;gap:10px}table.m td{padding-top:3px;padding-bottom:3px}.nb{height:25px}.ix .z{font-size:clamp(56px,6.4vw,110px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}[data-r]{transition:none}}
 
 </style>
@@ -481,51 +522,71 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   </div></div>
 </section>
 
-<!-- ============ 04 INSIGHTS ============ -->
-<section class="s" id="s4" data-label="Insights, made interactive">
+<!-- ============ 04 INSIGHTS + FORGE ============ -->
+<section class="s" id="s4" data-label="Insights and AI creation">
   <div class="glow" style="right:-14vw;bottom:-30vh;width:64vw;height:76vh"></div>
   <div class="sc"><div class="in">
     <div class="head">
-      <div class="eb" data-r style="--i:0"><b>02</b>Video insights, made interactive</div>
-      <h2 class="h" data-r style="--i:1">Your insight picks the scene. Flicks make it shoppable.</h2>
+      <div class="eb" data-r style="--i:0"><b>02</b>Video insights and AI creation</div>
+      <h2 class="h" data-r style="--i:1">Your insight picks the scene. Forge makes it interactive.</h2>
     </div>
     <div class="pipe">
       <div class="node" data-r style="--i:2">
         <div class="who"><span>01</span>JioHotstar insights</div>
-        <div class="scene">
-          <div class="box" style="left:14%;top:30%;width:26%;height:56%"><b>Lead</b></div>
-          <div class="box" style="left:50%;top:44%;width:17%;height:20%"><b>Necklace</b></div>
-          <div class="box" style="left:72%;top:26%;width:20%;height:60%"><b>Lehenga</b></div>
-          <span class="tc num">S1 · E04 · 18:42</span>
-        </div>
-        <div class="tags"><span class="chip on">Wedding</span><span class="chip on">Jewellery</span><span class="chip">Mandap</span><span class="chip">Lehenga</span></div>
+        <div class="vis"><div class="scene">
+          <div class="box" style="left:12%;top:20%;width:24%;height:62%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
+          <div class="box" style="left:42%;top:14%;width:22%;height:36%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.5 6-10a6 6 0 10-12 0c0 4.5 6 10 6 10z"/><circle cx="12" cy="11" r="2"/></svg></div>
+          <div class="box" style="left:70%;top:40%;width:20%;height:42%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8zM9 8a3 3 0 016 0"/></svg></div>
+        </div></div>
+        <div class="tags seq"><span class="chip">People</span><span class="chip">Setting</span><span class="chip">Products</span></div>
+        <h4>Your AI reads every scene.</h4>
+        <p>Who is in it, where it is set, what is on screen.</p>
       </div>
       <div class="conn"><i></i></div>
       <div class="node" data-r style="--i:3">
         <div class="who"><span>02</span>Advertiser match</div>
-        <div class="match">
-          <div><b>Wedding scene</b><em>Setting</em></div>
-          <div><b>Necklace, lehenga</b><em>On screen</em></div>
-          <div><b>Tanishq · Malabar</b><em>Fit</em></div>
-        </div>
+        <div class="vis"><div class="flow" style="width:100%"><span class="chip">Scene</span><span class="dash"></span><span class="chip on">Category</span><span class="dash"></span><span class="brands"><i></i><i></i><i></i></span></div></div>
+        <h4>The scene finds its advertisers.</h4>
+        <p>Context sets the category. The category sets the brands.</p>
       </div>
       <div class="conn"><i style="animation-delay:.8s"></i></div>
       <div class="node" data-r style="--i:4">
         <div class="who"><span>03</span>Flam · Forge + API</div>
-        <h4>Clip and products, merged into one interactive file.</h4>
-        <div class="ifl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5zM14 3v5h5"/></svg>scene.IFL</div>
-        <p>Not an overlay. The scene itself becomes the unit.</p>
+        <div class="vis"><div class="flow" style="width:100%">
+          <span class="tile"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 7l8 5-8 5V7z"/></svg></span><b class="plus">+</b><span class="tile sm"></span><span class="tile sm"></span><span class="dash"></span>
+          <span class="ifl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5zM14 3v5h5"/></svg>.IFL</span>
+        </div></div>
+        <h4>Clip and products become one interactive file.</h4>
+        <p>Works on finished footage, so brands can join after the shoot.</p>
       </div>
       <div class="conn"><i style="animation-delay:1.6s"></i></div>
       <div class="out" data-r style="--i:5">
-        <div class="dev" style="padding:7px;border-radius:24px"><div class="fk" data-flick="neck"><div class="wait">Live Flick</div></div></div>
-        <span class="pill hot"><span class="dot live"></span>Viewer swaps the jewellery</span>
+        <div class="dev" style="padding:6px;border-radius:22px"><div class="fk" data-flick="neck"><div class="wait">Live Flick</div></div></div>
+        <span class="pill hot"><span class="dot live"></span>Viewers swap the product</span>
       </div>
     </div>
-    <div class="facts">
-      <div class="fact" data-r style="--i:6"><b>Sell the scene after the shoot.</b><span>An original takes months to release. Sponsors can join in post-production.</span></div>
-      <div class="fact" data-r style="--i:7"><b>Weekly shows move in days.</b><span>Shot one week, live the next. Still time to add two more advertisers.</span></div>
-      <div class="fact" data-r style="--i:8"><b>When the cast is the ambassador.</b><span>Sharvari for Reva, Jim Sarbh for Edge by Titan. Swap what they wear.</span></div>
+    <div class="smb">
+      <div class="smbt" data-r style="--i:6">
+        <div class="tag"><span>For SMBs</span>Forge AI pipeline</div>
+        <b>One source video. Many ads.</b>
+        <span>No shoot, no editor. A prompt in the Flam dashboard does the work.</span>
+      </div>
+      <div class="dashw" data-r style="--i:7">
+        <div class="dbar"><i></i><i></i><i></i><span>Flam dashboard</span></div>
+        <div class="dwork">
+          <span class="vt src"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 7l8 5-8 5V7z"/></svg><em>Source</em></span>
+          <span class="dash"></span>
+          <span class="orb">Forge</span>
+          <span class="dash"></span>
+          <span class="vts"><span class="vt v1"><em>V1</em></span><span class="vt v2"><em>V2</em></span><span class="vt v3"><em>V3</em></span></span>
+        </div>
+        <div class="dprompt"><span>Swap the product. Make three versions.</span><i></i></div>
+      </div>
+      <div class="smbr" data-r style="--i:8">
+        <div class="lrow"><b>No reshoot</b><span>New versions from footage you already have.</span></div>
+        <div class="lrow"><b>Lower cost</b><span>One source video covers every version.</span></div>
+        <div class="lrow"><b>Easy, optimised</b><span>Prompt in, one light file out: about a tenth of video's size.</span></div>
+      </div>
     </div>
   </div></div>
 </section>
