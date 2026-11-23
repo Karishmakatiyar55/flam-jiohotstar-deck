@@ -167,7 +167,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===6) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===7) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -195,7 +195,7 @@ function enter(i){
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
   if(i===4) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===6){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===6) paint(); },650); }
+  if(i===7){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===7) paint(); },650); }
 }
 function leave(i){ if(i<0) return; silence(slides[i]); if(i===5){ dropDemo(); } }
 function go(n,first){
@@ -237,6 +237,7 @@ function buildChrome(){
 }
 
 buildChrome(); buildCats(); buildRun(); wireMath();
+try{ $("#endWave").src = $("#s1 .wave").src; }catch(e){}
 var h0 = parseInt(location.hash.slice(1),10);
 go(h0>=1 && h0<=N ? h0-1 : 0, true);
 window.__deck = {go:go, compute:compute, state:function(){ return {cur:cur, frames:$$("iframe").length, M:M}; }};

@@ -2,14 +2,16 @@
 
 The Flam × JioHotstar pitch deck as one self-contained static page (`index.html`), in the style of the Flam × Meta decks.
 
-## Slides (7)
+## Slides (9)
 1. Hook, with a live Flick in a pre-roll mock
 2. Four gaps: commerce, ad slots, video insights, SMB advertisers
 3. Same episode, more to sell (formats on top of what is sold today)
 4. Video insights, made interactive
 5. Commerce and new advertisers
-6. Live demo (the JioHotstar demo in a phone frame, with a run sheet)
-7. Revenue math (an editable example)
+6. Demo (the JioHotstar demo in a phone frame, with a run sheet)
+7. ITR and intent data
+8. Revenue math (an editable example)
+9. Close
 
 ## Present
 - Arrow keys or the on-screen buttons move between slides; **F** toggles full screen; `#4` in the address opens slide 4.
