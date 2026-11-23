@@ -18,7 +18,8 @@ var FLICKS = {
   chair: {id:"c5htms", r:1},
   neck:  {id:"ikutv6", r:9/16},
   merc:  {tag:"https://native-ads.appless.workers.dev/6a9bc07393e71f3ec9b12c81_i3pdeq/ad.js", r:1},
-  sony:  {tag:"https://native-ads-dev.appless.workers.dev/6a96c6969e74536944c4167f_dj5rq6/ad.js", r:1}
+  sony:  {tag:"https://native-ads-dev.appless.workers.dev/6a96c6969e74536944c4167f_dj5rq6/ad.js", r:1},
+  cayman:{tag:"https://native-ads.appless.workers.dev/6aa776159846b99b24d49ce4_m1ugyq/ad.js", r:1}   // Cayman Islands, tag as used in flicks-social-apps
 };
 // Advertiser categories on slide 5. flick = key above; without one the tile shows what would swap.
 var CATS = [
@@ -28,10 +29,8 @@ var CATS = [
   {k:"auto",   t:"Auto",              d:"Models, trims, paint",             ic:"car",   flick:"merc",  cap:"Car swap"},
   {k:"home",   t:"Furniture",         d:"Fabrics, finishes, rooms",         ic:"sofa",  flick:"chair", cap:"Chair swap"},
   {k:"dur",    t:"Consumer durables", d:"Phones, audio, appliances",        ic:"phone", flick:"sony",  cap:"Product swap"},
-  {k:"travel", t:"Travel",            d:"Destinations, room types",         ic:"plane", idea:["Swap the destination","Beach, mountain or city, in one video."]},
-  {k:"estate", t:"Real estate",       d:"Floor plans, towers, views",       ic:"tower", idea:["Swap the floor plan","2, 3 or 4 BHK. Day or dusk. Furnished or bare."]},
-  {k:"bfsi",   t:"BFSI",              d:"Card tiers, plans, benefits",      ic:"card",  idea:["Swap the card tier","Travel, dining or shopping benefits, side by side."]},
-  {k:"tech",   t:"Tech and apps",     d:"Offers, use cases",                ic:"app",   idea:["Swap the use case","One app, three reasons to open it tonight."]}
+  {k:"travel", t:"Travel",            d:"Destinations, stays, moments",     ic:"plane", flick:"cayman", cap:"Cayman Islands"},
+  {k:"bfsi",   t:"BFSI",              d:"Insurance, cards, plans",          ic:"card",  idea:["Swap the plan","Cover, card tier or benefit, side by side."]}   // GEICO Flick to go here once its tag is in hand
 ];
 var START_CAT = "home";
 // Revenue example (slide 7). Every value is editable on the slide.

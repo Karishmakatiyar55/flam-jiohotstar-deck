@@ -203,7 +203,7 @@ input{font:inherit;color:inherit}
 
 /* ================= 05 advertisers ================= */
 .adv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,3.2vw,60px);align-items:center}
-.cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,.8vw,12px)}
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,.8vw,12px)}
 .cat{position:relative;text-align:left;display:flex;flex-direction:column;gap:5px;padding:clamp(11px,1.1vw,16px);border-radius:16px;border:1px solid var(--line);background:rgba(44,22,17,.3);min-width:0;transition:background .3s,border-color .3s,transform .3s}
 .cat:hover{transform:translateY(-2px);border-color:rgba(242,196,179,.4)}
 .cat.cur{background:rgba(242,196,179,.1);border-color:rgba(242,196,179,.65)}
