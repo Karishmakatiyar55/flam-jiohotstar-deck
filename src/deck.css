@@ -366,7 +366,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   #dlabel{display:none}
 }
 @media (max-width:560px){.cols{grid-template-columns:minmax(0,1fr)}.col{padding-left:0;border-left:0}}
-@media (max-height:720px){#s4 .in{gap:10px}#s4 .out .fk{width:88px}#s4 .out .pill{font-size:11px;padding:4px 9px}.smb{padding-top:10px}.dprompt{margin-bottom:8px;padding:4px 10px}.in{padding-top:82px;padding-bottom:76px;gap:14px}.cat span{min-height:0}.cat{padding:10px 12px}.viz{height:48px}#s8 .in{padding-top:78px;padding-bottom:72px;gap:10px}table.m td{padding-top:3px;padding-bottom:3px}.nb{height:25px}.ix .z{font-size:clamp(56px,6.4vw,110px)}}
+@media (max-height:720px){#s4 .in{gap:14px}#s4 .out .pill{font-size:11px;padding:4px 9px}.smb{padding-top:10px}.dprompt{margin-bottom:8px;padding:4px 10px}.in{padding-top:82px;padding-bottom:76px;gap:14px}.cat span{min-height:0}.cat{padding:10px 12px}.viz{height:48px}#s8 .in{padding-top:78px;padding-bottom:72px;gap:10px}table.m td{padding-top:3px;padding-bottom:3px}.nb{height:25px}.ix .z{font-size:clamp(56px,6.4vw,110px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}[data-r]{transition:none}}
 
 /* =====================================================================
@@ -591,3 +591,9 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 .gup circle{fill:#2a150e;stroke:#F2C4B3;stroke-width:1.2}
 .gup path{fill:none;stroke:#FBEDE5;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .s.go .gup{opacity:1}
+
+/* insights slide without the SMB strip: square Reva Flick, roomier steps */
+#s4 .in{gap:clamp(20px,4vh,48px)}
+#s4 .out .fk{width:clamp(170px,min(19vw,34vh),320px);aspect-ratio:1}
+#s4 .vis{height:clamp(84px,15vh,170px)}
+#s4 .node{gap:clamp(10px,1.8vh,18px);padding:clamp(14px,1.6vw,26px)}
