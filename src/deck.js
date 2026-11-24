@@ -16,7 +16,7 @@ var FLICKS = {
   lips:  {id:"onflg2", r:1},
   chair: {id:"c5htms", r:1},
   neck:  {id:"ikutv6", r:9/16},
-  reva:  {tag:"https://flicks.flamapp.live/y1zcql/ad.js", r:1,                 // Reva Diamonds, tag and settings as the JioHotstar demo runs it
+  reva:  {tag:"https://flicks.flamapp.live/y1zcql/ad.js", r:1, muteTop:true,                 // Reva Diamonds, tag and settings as the JioHotstar demo runs it
           pre:'<script>var clickTag = "https://www.revabypng.com/";<\/script>\n<script>window.AD_CONFIG=window.AD_CONFIG||{};window.AD_CONFIG.dsp="dv360_studio";window.AD_CONFIG.publisherInfo={"publisher_id":"${PUBLISHER_ID}","adsxt_publisher_id":"${ADSXT_PUBLISHER_ID}","universal_site_id":"${UNIVERSAL_SITE_ID}","source_url":"${SOURCE_URL}","source_url_enc":"${SOURCE_URL_ENC}","adsxt_ad_system_domain":"${ADSXT_AD_SYSTEM_DOMAIN}"};window.AD_CONFIG.clickTracker={"mode":"clicktag","template":""};<\/script>\n'},
   merc:  {tag:"https://native-ads.appless.workers.dev/6a9bc07393e71f3ec9b12c81_i3pdeq/ad.js", r:1},
   sony:  {tag:"https://native-ads-dev.appless.workers.dev/6a96c6969e74536944c4167f_dj5rq6/ad.js", r:1},
