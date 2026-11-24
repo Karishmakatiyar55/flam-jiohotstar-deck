@@ -182,7 +182,7 @@ function wireMath(){
 var rotI = 0, rotT = 0;
 function rotStart(){ clearInterval(rotT); var el = $("#rot"); rotI = 0; el.style.transition = "none"; el.style.transform = "translateY(0)";
   rotT = setInterval(function(){ rotI++; el.style.transition = ""; el.style.transform = "translateY(-"+(rotI*1.16)+"em)";
-    if(rotI===3) setTimeout(function(){ el.style.transition = "none"; el.style.transform = "translateY(0)"; rotI = 0; },800); },2600); }
+    if(rotI===2) setTimeout(function(){ el.style.transition = "none"; el.style.transform = "translateY(0)"; rotI = 0; },800); },2600); }
 
 /* ---------- navigation ---------- */
 function enter(i){
