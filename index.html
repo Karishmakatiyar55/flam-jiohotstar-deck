@@ -567,6 +567,20 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 .pill.key{gap:9px;color:var(--tx)}
 .v3.st{position:static;transform:none}
 
+/* ================= benchmark slide ================= */
+#sb .in{flex-direction:row;align-items:center;gap:clamp(24px,3.4vw,64px)}
+.bl{flex:1 1 300px;max-width:430px;min-width:0;display:flex;flex-direction:column;gap:clamp(16px,3vh,32px)}
+#sb .h{font-size:clamp(30px,3.6vw,64px)}
+.bkey{display:flex;flex-direction:column;gap:8px}
+.bkey div{display:grid;grid-template-columns:54px minmax(0,1fr);align-items:baseline;gap:12px;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.6);background:var(--key);box-shadow:var(--keysh)}
+.bkey b{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600}
+.bkey span{font-size:clamp(13px,1vw,15.5px);line-height:1.4;color:var(--sec)}
+.bwrap{flex:3 1 520px;min-width:0;display:flex;justify-content:center}
+.bdev{padding:clamp(7px,.7vw,11px);border-radius:clamp(20px,1.8vw,30px);width:min(100%,calc((100vh - clamp(190px,25vh,250px)) * 1.424))}
+.fk.bench{width:100%;aspect-ratio:1256/882;border-radius:clamp(14px,1.3vw,22px);background:#0b0705}
+.fk.bench iframe{right:auto;bottom:auto}
+@media (max-width:980px){#sb .in{flex-direction:column;align-items:stretch}.bl{max-width:none}.bdev{width:100%}}
+
 </style>
 </head>
 <body>
@@ -597,6 +611,28 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
         </div></div>
         <div class="hcap">Tap inside the ad to swap</div>
       </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ BENCHMARK (slide 2) ============ -->
+<section class="s" id="sb" data-label="Benchmark">
+  <div class="glow" style="left:-12vw;bottom:-28vh;width:58vw;height:72vh"></div>
+  <div class="sc"><div class="in">
+    <div class="bl">
+      <div class="head">
+        <div class="eb" data-r style="--i:0">Benchmarked</div>
+        <h2 class="h" data-r style="--i:1">Measured, not claimed.</h2>
+        <div class="sub" data-r style="--i:2">IFL Bench compares swaps in Flicks with conventional video on latency and payload.</div>
+      </div>
+      <div class="bkey" data-r style="--i:3">
+        <div><b>Left</b><span>One HTML page swapping three videos</span></div>
+        <div><b>Right</b><span>One Flicks file holding all three variants</span></div>
+      </div>
+      <div class="cue" data-r style="--i:4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 013 0V11m0-1.5a1.5 1.5 0 013 0V11m0-.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1.2a5 5 0 01-4-2L5 15.5a1.6 1.6 0 012.5-2L9 15V11"/></svg>Tap a jacket on each side to read the switch latency.</div>
+    </div>
+    <div class="bwrap" data-r style="--i:3">
+      <div class="dev bdev"><div class="fk bench" id="bench"><div class="wait">Loading the bench</div></div></div>
     </div>
   </div></div>
 </section>
@@ -1016,7 +1052,20 @@ function mountFlick(el,key){
 function unmount(el){ $$("iframe",el).forEach(function(f){ try{ f.src = "about:blank"; }catch(e){} f.remove(); }); }
 function silence(sl){ $$(".fk",sl).forEach(unmount); }   // removing the frame is the only sure mute for a cross-site Flick
 
-/* ---------- slide 5: categories ---------- */
+/* ---------- benchmark slide: show only the two comparison units of the bench page ---------- */
+var BENCH = "https://ifl-bench-delta.vercel.app/";
+var BX = 92, BY = 496, BW = 1256, BH = 882;        // the part of the 1440-wide bench page that holds the two units
+var benchRo = null;
+function fitBench(){ var el = $("#bench"), fr = $("iframe",el); if(!fr || !el.clientWidth) return; fr.style.transform = "scale("+(el.clientWidth/BW)+") translate(-"+BX+"px,-"+BY+"px)"; }
+function mountBench(){
+  var el = $("#bench"); unmount(el);
+  var fr = document.createElement("iframe"); fr.title = "IFL Bench"; fr.scrolling = "no"; fr.allow = "autoplay; fullscreen; encrypted-media";
+  fr.style.cssText = "position:absolute;left:0;top:0;width:1440px;height:1500px;border:0;transform-origin:0 0;background:#0b0705";
+  fr.src = BENCH; el.appendChild(fr); fitBench();
+  if(!benchRo && window.ResizeObserver){ benchRo = new ResizeObserver(fitBench); benchRo.observe(el); }
+}
+
+/* ---------- slide 6: categories ---------- */
 var catKey = START_CAT;
 function buildCats(){
   $("#cats").innerHTML = CATS.map(function(c){
@@ -1055,7 +1104,7 @@ function mountDemo(){
 function dropDemo(){ if(demoFr){ try{ demoFr.src = "about:blank"; }catch(e){} demoFr.remove(); demoFr = null; } }
 var fullFr = null;
 function openFull(){ dropDemo(); fullFr = document.createElement("iframe"); fullFr.title = "JioHotstar demo"; fullFr.allow = "autoplay; fullscreen; encrypted-media"; fullFr.src = DEMO + demoHash; $("#full").appendChild(fullFr); $("#full").classList.add("on"); }
-function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===5) mountDemo(); }
+function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===6) mountDemo(); }
 
 /* ---------- slide 7: revenue example ---------- */
 var M = JSON.parse(JSON.stringify(MATH)), firstMath = true;
@@ -1100,7 +1149,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===7) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===8) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -1123,14 +1172,15 @@ function enter(i){
   var my = ++token, sl = slides[i];
   setTimeout(function(){ if(my!==token || document.hidden) return;
     $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
-    if(i===4) showCat(true);
-    if(i===5 && !fullFr) mountDemo();
+    if(i===5) showCat(true);
+    if(i===1) mountBench();
+    if(i===6 && !fullFr) mountDemo();
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
-  if(i===4) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===7){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===7) paint(); },650); }
+  if(i===5) showCat(false);                       // preload nothing, but keep the tile state right
+  if(i===8){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===8) paint(); },650); }
 }
-function leave(i){ if(i<0) return; silence(slides[i]); if(i===5){ dropDemo(); } }
+function leave(i){ if(i<0) return; silence(slides[i]); if(i===6){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
   var old = cur; cur = n; leave(old);

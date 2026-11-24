@@ -82,7 +82,20 @@ function mountFlick(el,key){
 function unmount(el){ $$("iframe",el).forEach(function(f){ try{ f.src = "about:blank"; }catch(e){} f.remove(); }); }
 function silence(sl){ $$(".fk",sl).forEach(unmount); }   // removing the frame is the only sure mute for a cross-site Flick
 
-/* ---------- slide 5: categories ---------- */
+/* ---------- benchmark slide: show only the two comparison units of the bench page ---------- */
+var BENCH = "https://ifl-bench-delta.vercel.app/";
+var BX = 92, BY = 496, BW = 1256, BH = 882;        // the part of the 1440-wide bench page that holds the two units
+var benchRo = null;
+function fitBench(){ var el = $("#bench"), fr = $("iframe",el); if(!fr || !el.clientWidth) return; fr.style.transform = "scale("+(el.clientWidth/BW)+") translate(-"+BX+"px,-"+BY+"px)"; }
+function mountBench(){
+  var el = $("#bench"); unmount(el);
+  var fr = document.createElement("iframe"); fr.title = "IFL Bench"; fr.scrolling = "no"; fr.allow = "autoplay; fullscreen; encrypted-media";
+  fr.style.cssText = "position:absolute;left:0;top:0;width:1440px;height:1500px;border:0;transform-origin:0 0;background:#0b0705";
+  fr.src = BENCH; el.appendChild(fr); fitBench();
+  if(!benchRo && window.ResizeObserver){ benchRo = new ResizeObserver(fitBench); benchRo.observe(el); }
+}
+
+/* ---------- slide 6: categories ---------- */
 var catKey = START_CAT;
 function buildCats(){
   $("#cats").innerHTML = CATS.map(function(c){
@@ -121,7 +134,7 @@ function mountDemo(){
 function dropDemo(){ if(demoFr){ try{ demoFr.src = "about:blank"; }catch(e){} demoFr.remove(); demoFr = null; } }
 var fullFr = null;
 function openFull(){ dropDemo(); fullFr = document.createElement("iframe"); fullFr.title = "JioHotstar demo"; fullFr.allow = "autoplay; fullscreen; encrypted-media"; fullFr.src = DEMO + demoHash; $("#full").appendChild(fullFr); $("#full").classList.add("on"); }
-function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===5) mountDemo(); }
+function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===6) mountDemo(); }
 
 /* ---------- slide 7: revenue example ---------- */
 var M = JSON.parse(JSON.stringify(MATH)), firstMath = true;
@@ -166,7 +179,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===7) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===8) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -189,14 +202,15 @@ function enter(i){
   var my = ++token, sl = slides[i];
   setTimeout(function(){ if(my!==token || document.hidden) return;
     $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
-    if(i===4) showCat(true);
-    if(i===5 && !fullFr) mountDemo();
+    if(i===5) showCat(true);
+    if(i===1) mountBench();
+    if(i===6 && !fullFr) mountDemo();
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
-  if(i===4) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===7){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===7) paint(); },650); }
+  if(i===5) showCat(false);                       // preload nothing, but keep the tile state right
+  if(i===8){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===8) paint(); },650); }
 }
-function leave(i){ if(i<0) return; silence(slides[i]); if(i===5){ dropDemo(); } }
+function leave(i){ if(i<0) return; silence(slides[i]); if(i===6){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
   var old = cur; cur = n; leave(old);
