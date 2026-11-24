@@ -2,7 +2,7 @@
 
 The Flam × JioHotstar pitch deck as one self-contained static page (`index.html`), in the style of the Flam × Meta decks.
 
-## Slides (11)
+## Slides (10)
 1. Hook, with a Flick in a pre-roll mock
 2. Benchmark: IFL Bench, cropped to the two comparison units
 3. Where the growth is: interactive video ad slots, branded content, contextual ads
@@ -11,9 +11,8 @@ The Flam × JioHotstar pitch deck as one self-contained static page (`index.html
 6. Branded content, after the shoot (with a frame for a Flick; set `post` in `FLICKS`)
 7. Commerce and new advertisers
 8. ITR and intent data
-9. Revenue math (an editable example)
-10. Demo (the JioHotstar demo in a phone frame, with a run sheet)
-11. Close
+9. Demo (the JioHotstar demo in a phone frame, with a run sheet)
+10. Close
 
 ## Present
 - Arrow keys or the on-screen buttons move between slides; **F** toggles full screen; `#4` in the address opens slide 4.
@@ -23,10 +22,7 @@ The Flam × JioHotstar pitch deck as one self-contained static page (`index.html
 ## Edit
 Edit the files in `src/`, then run `python3 build.py`. It writes `index.html` with the styles, script, logos and background inlined.
 
-Settings are at the top of `src/deck.js`: `DEMO` (demo link), `DEMO_SLOTS`, `FLOWS` (run sheet on the demo slide), `FLICKS`, `CATS` (advertiser categories) and `MATH` (calculator defaults).
-
-## Numbers
-The revenue slide uses example numbers, not JioHotstar's rate card. They are shown gross, before Flam's fee.
+Settings are at the top of `src/deck.js`: `DEMO` (demo link), `DEMO_SLOTS`, `FLOWS` (run sheet on the demo slide), `FLICKS`, and `CATS` (advertiser categories).
 
 ## Deploy on Vercel
 Framework preset: **Other**. No build command, output directory = root.

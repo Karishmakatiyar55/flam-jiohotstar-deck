@@ -114,7 +114,7 @@ function showCat(live){
 }
 
 /* ---------- slide 6: demo ---------- */
-var DEMO_I = 9, MATH_I = 8;   // zero-based slide positions of the demo and the revenue slide
+var DEMO_I = 8, MATH_I = -1;   // zero-based slide position of the demo; the revenue slide was removed (MATH_I = -1)
 var demoFr = null, demoHash = "", ro = null;
 function buildRun(){
   var n = 0;
@@ -252,7 +252,7 @@ function buildChrome(){
   document.addEventListener("visibilitychange",function(){ if(document.hidden){ token++; if(cur>=0) silence(slides[cur]); } else if(cur>=0){ enter(cur); } });
 }
 
-buildChrome(); buildCats(); buildRun(); wireMath();
+buildChrome(); buildCats(); buildRun(); if($("#mrows")) wireMath();
 try{ $("#endWave").src = $("#s1 .wave").src; }catch(e){}
 var h0 = parseInt(location.hash.slice(1),10);
 go(h0>=1 && h0<=N ? h0-1 : 0, true);
