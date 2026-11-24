@@ -34,7 +34,7 @@ var CATS = [
   {k:"home",   t:"Furniture",         d:"Fabrics, finishes, rooms",         ic:"sofa",  flick:"chair", cap:"Chair swap"},
   {k:"dur",    t:"Consumer durables", d:"Phones, audio, appliances",        ic:"phone", flick:"sony",  cap:"Product swap"},
   {k:"travel", t:"Travel",            d:"Destinations, stays, moments",     ic:"plane", flick:"cayman", cap:"Cayman Islands"},
-  {k:"bfsi",   t:"BFSI",              d:"Cards, insurance, plans",          ic:"card",  flick:"amex",  cap:"American Express"}
+  {k:"bfsi",   t:"BFSI",              d:"Cards, insurance, loans",          ic:"card",  flick:"amex",  cap:"American Express"}
 ];
 var START_CAT = "home";
 // Revenue example (slide 7). Every value is editable on the slide.
