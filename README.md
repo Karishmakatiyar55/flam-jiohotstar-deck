@@ -8,7 +8,7 @@ The Flam × JioHotstar pitch deck as one self-contained static page (`index.html
 3. Where the growth is: interactive video ad slots, branded content, contextual ads
 4. Same episode, more to sell (formats on top of what is sold today)
 5. Video insights, made interactive
-6. Branded content, after the shoot (with a frame for a Flick; set `post` in `FLICKS`)
+6. Branded content, after the shoot (with its Flick; `post` in `FLICKS`)
 7. Commerce and new advertisers
 8. ITR and intent data
 9. Demo (the JioHotstar demo in a phone frame, with a run sheet)

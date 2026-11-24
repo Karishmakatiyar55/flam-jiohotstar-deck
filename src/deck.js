@@ -16,7 +16,7 @@ var FLICKS = {
   lips:  {id:"onflg2", r:1},
   chair: {id:"c5htms", r:1},
   neck:  {id:"ikutv6", r:9/16},
-  post:  null,   // the Flick for the "after the shoot" slide. Put {id:"..."} for an embed code or {tag:"https://.../ad.js"} for an ad tag.
+  post:  {url:"https://flam-ads-uploader.vercel.app/d/f18b056b-76b3-4357-b721-ea0459188318", r:9/16},   // the "after the shoot" Flick: a preview page, framed as it is
   reva:  {tag:"https://flicks.flamapp.live/y1zcql/ad.js", r:1, muteTop:true,                 // Reva Diamonds, tag and settings as the JioHotstar demo runs it
           pre:'<script>var clickTag = "https://www.revabypng.com/";<\/script>\n<script>window.AD_CONFIG=window.AD_CONFIG||{};window.AD_CONFIG.dsp="dv360_studio";window.AD_CONFIG.publisherInfo={"publisher_id":"${PUBLISHER_ID}","adsxt_publisher_id":"${ADSXT_PUBLISHER_ID}","universal_site_id":"${UNIVERSAL_SITE_ID}","source_url":"${SOURCE_URL}","source_url_enc":"${SOURCE_URL_ENC}","adsxt_ad_system_domain":"${ADSXT_AD_SYSTEM_DOMAIN}"};window.AD_CONFIG.clickTracker={"mode":"clicktag","template":""};<\/script>\n'},
   merc:  {tag:"https://native-ads.appless.workers.dev/6a9bc07393e71f3ec9b12c81_i3pdeq/ad.js", r:1},
@@ -68,6 +68,7 @@ var blobs = {};
 // The Flick's own sound button sits bottom-right, over the third option on some Flicks. muteTop moves it to the top-right.
 var MUTE_TOP = '<script>(function(){var n=0,t=setInterval(function(){try{var p=document.querySelector("vertex-player"),r=p&&p.shadowRoot;if(r&&!r.querySelector("style[data-deck]")){var s=document.createElement("style");s.setAttribute("data-deck","");s.textContent="#vp-container>button[style*=\\"bottom: 12px\\"]{bottom:auto!important;top:12px!important}";r.appendChild(s);clearInterval(t)}}catch(e){}if(++n>240)clearInterval(t)},250)})();<\/script>\n';
 function flickSrc(f){
+  if(f.url) return f.url;
   if(f.id) return "https://flicks.flamapp.live/"+f.id+"/?embed=1&u="+encodeURIComponent(PU);
   if(!blobs[f.tag]){
     var html = '<!doctype html>\n<meta charset=utf-8>\n<meta name=ad.orientation content=portrait,landscape>\n<style>html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden}</style>\n<script>var ExitApi=window.ExitApi||{exit:function(){}},clickTag="${CLICK_URL_UNESC}";<\/script>\n'+(f.pre||'')+(f.muteTop?MUTE_TOP:'')+'<script src='+f.tag+'><\/script>';
@@ -79,6 +80,10 @@ function mountFlick(el,key){
   unmount(el); var f = FLICKS[key]; if(!f) return;
   var fr = document.createElement("iframe");
   fr.title = "Flick"; fr.allow = "autoplay; fullscreen; encrypted-media"; fr.src = flickSrc(f);
+  if(el.hasAttribute("data-mini")){   // a small, untappable view of the same Flick: shows its opening frame as the scene picture
+    fr.setAttribute("tabindex","-1"); fr.setAttribute("aria-hidden","true"); fr.scrolling = "no";
+    fr.style.cssText = "position:absolute;left:0;top:0;width:360px;height:640px;border:0;transform-origin:0 0;pointer-events:none;transform:scale("+(el.clientWidth/360)+") translateY(-84px)";
+  }
   el.appendChild(fr);
 }
 function unmount(el){ $$("iframe",el).forEach(function(f){ try{ f.src = "about:blank"; }catch(e){} f.remove(); }); }
