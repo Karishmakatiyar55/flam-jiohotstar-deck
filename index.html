@@ -907,31 +907,6 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
   </div></div>
 </section>
 
-<!-- ============ 06 DEMO ============ -->
-<section class="s" id="s6" data-label="Demo">
-  <div class="sc"><div class="in">
-    <div class="dhead" data-r style="--i:0">
-      <div class="head">
-        <div class="eb">Flicks inside JioHotstar · Demo</div>
-        <h2 class="h">Every answer above, running in the app.</h2>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="ghost" id="demoNew" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>New tab</a>
-        <button class="cta" id="demoFull"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Full-screen demo</button>
-      </div>
-    </div>
-    <div class="dbody" data-r style="--i:1">
-      <div class="run" id="run"></div>
-      <div class="phone"><div class="pscr" id="pscr"><div class="wait"><span id="demoWait">Loading the demo</span></div></div></div>
-      <div class="dside">
-        <div class="big num">25</div>
-        <p>Flicks placements in a working replica of the app: ad breaks, shop the look, Tadka, banners, search.</p>
-        <p>Pick a flow on the left, or use <b style="color:var(--acc);font-weight:600">Ad slots</b> inside the phone.</p>
-      </div>
-    </div>
-  </div></div>
-</section>
-
 <!-- ============ 07 ITR + INTENT DATA ============ -->
 <section class="s" id="s7" data-label="ITR and intent data">
   <div class="glow" style="left:-12vw;top:-26vh;width:60vw;height:72vh"></div>
@@ -995,6 +970,31 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
         </div>
         <div class="asks"><span class="pill hot">Add more advertisers</span><span class="pill hot">More from the same advertiser</span><span class="pill">Existing formats untouched</span></div>
         <div class="note">Example numbers to edit together. Not JioHotstar's rate card. Gross media value, before Flam's fee.</div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ 06 DEMO ============ -->
+<section class="s" id="s6" data-label="Demo">
+  <div class="sc"><div class="in">
+    <div class="dhead" data-r style="--i:0">
+      <div class="head">
+        <div class="eb">Flicks inside JioHotstar · Demo</div>
+        <h2 class="h">Every answer above, running in the app.</h2>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="ghost" id="demoNew" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>New tab</a>
+        <button class="cta" id="demoFull"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Full-screen demo</button>
+      </div>
+    </div>
+    <div class="dbody" data-r style="--i:1">
+      <div class="run" id="run"></div>
+      <div class="phone"><div class="pscr" id="pscr"><div class="wait"><span id="demoWait">Loading the demo</span></div></div></div>
+      <div class="dside">
+        <div class="big num">25</div>
+        <p>Flicks placements in a working replica of the app: ad breaks, shop the look, Tadka, banners, search.</p>
+        <p>Pick a flow on the left, or use <b style="color:var(--acc);font-weight:600">Ad slots</b> inside the phone.</p>
       </div>
     </div>
   </div></div>
@@ -1145,6 +1145,7 @@ function showCat(live){
 }
 
 /* ---------- slide 6: demo ---------- */
+var DEMO_I = 9, MATH_I = 8;   // zero-based slide positions of the demo and the revenue slide
 var demoFr = null, demoHash = "", ro = null;
 function buildRun(){
   var n = 0;
@@ -1167,7 +1168,7 @@ function mountDemo(){
 function dropDemo(){ if(demoFr){ try{ demoFr.src = "about:blank"; }catch(e){} demoFr.remove(); demoFr = null; } }
 var fullFr = null;
 function openFull(){ dropDemo(); fullFr = document.createElement("iframe"); fullFr.title = "JioHotstar demo"; fullFr.allow = "autoplay; fullscreen; encrypted-media"; fullFr.src = DEMO + demoHash; $("#full").appendChild(fullFr); $("#full").classList.add("on"); }
-function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===7) mountDemo(); }
+function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===DEMO_I) mountDemo(); }
 
 /* ---------- slide 7: revenue example ---------- */
 var M = JSON.parse(JSON.stringify(MATH)), firstMath = true;
@@ -1212,7 +1213,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===9) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===MATH_I) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -1237,13 +1238,13 @@ function enter(i){
     $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
     if(i===6) showCat(true);
     if(i===1) mountBench();
-    if(i===7 && !fullFr) mountDemo();
+    if(i===DEMO_I && !fullFr) mountDemo();
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
   if(i===6) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===9){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===9) paint(); },650); }
+  if(i===MATH_I){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===MATH_I) paint(); },650); }
 }
-function leave(i){ if(i<0) return; silence(slides[i]); if(i===7){ dropDemo(); } }
+function leave(i){ if(i<0) return; silence(slides[i]); if(i===DEMO_I){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
   var old = cur; cur = n; leave(old);

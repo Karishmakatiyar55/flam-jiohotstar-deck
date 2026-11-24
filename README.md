@@ -10,9 +10,9 @@ The Flam × JioHotstar pitch deck as one self-contained static page (`index.html
 5. Video insights, made interactive
 6. Branded content, after the shoot (with a frame for a Flick; set `post` in `FLICKS`)
 7. Commerce and new advertisers
-8. Demo (the JioHotstar demo in a phone frame, with a run sheet)
-9. ITR and intent data
-10. Revenue math (an editable example)
+8. ITR and intent data
+9. Revenue math (an editable example)
+10. Demo (the JioHotstar demo in a phone frame, with a run sheet)
 11. Close
 
 ## Present

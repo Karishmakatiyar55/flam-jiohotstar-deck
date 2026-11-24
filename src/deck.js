@@ -114,6 +114,7 @@ function showCat(live){
 }
 
 /* ---------- slide 6: demo ---------- */
+var DEMO_I = 9, MATH_I = 8;   // zero-based slide positions of the demo and the revenue slide
 var demoFr = null, demoHash = "", ro = null;
 function buildRun(){
   var n = 0;
@@ -136,7 +137,7 @@ function mountDemo(){
 function dropDemo(){ if(demoFr){ try{ demoFr.src = "about:blank"; }catch(e){} demoFr.remove(); demoFr = null; } }
 var fullFr = null;
 function openFull(){ dropDemo(); fullFr = document.createElement("iframe"); fullFr.title = "JioHotstar demo"; fullFr.allow = "autoplay; fullscreen; encrypted-media"; fullFr.src = DEMO + demoHash; $("#full").appendChild(fullFr); $("#full").classList.add("on"); }
-function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===7) mountDemo(); }
+function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===DEMO_I) mountDemo(); }
 
 /* ---------- slide 7: revenue example ---------- */
 var M = JSON.parse(JSON.stringify(MATH)), firstMath = true;
@@ -181,7 +182,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===9) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===MATH_I) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -206,13 +207,13 @@ function enter(i){
     $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
     if(i===6) showCat(true);
     if(i===1) mountBench();
-    if(i===7 && !fullFr) mountDemo();
+    if(i===DEMO_I && !fullFr) mountDemo();
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
   if(i===6) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===9){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===9) paint(); },650); }
+  if(i===MATH_I){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===MATH_I) paint(); },650); }
 }
-function leave(i){ if(i<0) return; silence(slides[i]); if(i===7){ dropDemo(); } }
+function leave(i){ if(i<0) return; silence(slides[i]); if(i===DEMO_I){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
   var old = cur; cur = n; leave(old);
