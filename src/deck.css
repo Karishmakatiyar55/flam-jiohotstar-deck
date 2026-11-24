@@ -586,3 +586,8 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 .gt1{font:600 19px Figtree,sans-serif;fill:#F2C4B3;letter-spacing:-.02em;opacity:0;transition:opacity .5s ease 2s}
 .gx,.gy{font:500 8.5px Figtree,sans-serif;fill:#8E7F78;letter-spacing:.14em;text-transform:uppercase}
 .s.go .gline{stroke-dashoffset:0}.s.go .garea,.s.go .gdot,.s.go .gt1{opacity:1}
+
+.gup{opacity:0;transition:opacity .5s ease 2s}
+.gup circle{fill:#2a150e;stroke:#F2C4B3;stroke-width:1.2}
+.gup path{fill:none;stroke:#FBEDE5;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.s.go .gup{opacity:1}
