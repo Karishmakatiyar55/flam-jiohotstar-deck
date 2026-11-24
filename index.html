@@ -610,6 +610,31 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 #s4 .vis{height:clamp(84px,15vh,170px)}
 #s4 .node{gap:clamp(10px,1.8vh,18px);padding:clamp(14px,1.6vw,26px)}
 
+/* ================= after the shoot ================= */
+.ps{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,56px);align-items:center}
+.psl{display:flex;flex-direction:column;gap:clamp(10px,1.6vh,18px);min-width:0}
+#sp .node{justify-content:flex-start;gap:clamp(10px,1.8vh,18px);padding:clamp(14px,1.6vw,26px)}
+.prow{display:grid;grid-template-columns:clamp(86px,8vw,120px) minmax(0,1fr);align-items:center;gap:clamp(12px,1.4vw,24px)}
+.prow>b{font-size:clamp(14px,1.1vw,18px);font-weight:600;color:var(--mut)}
+.prow.hi>b{color:var(--acc)}
+.steps{display:flex;align-items:center;gap:clamp(6px,.8vw,12px);flex-wrap:wrap}
+.steps .chip{font-size:clamp(12px,.95vw,15px);padding:6px 12px}
+.steps .ar{color:var(--dim);flex-shrink:0}
+.chip.lk{display:inline-flex;align-items:center;gap:6px;color:var(--mut);box-shadow:var(--well);background:#0b0605}
+.fork{display:grid;grid-template-columns:auto clamp(40px,5vw,90px) minmax(0,1fr);align-items:center;gap:clamp(8px,1vw,16px)}
+.sc1{position:relative;width:clamp(96px,10vw,150px);aspect-ratio:16/10;border-radius:12px;background:radial-gradient(120% 90% at 70% 20%,#7a3a24 0%,#3a1a12 45%,#150b08 100%);box-shadow:var(--well),0 0 0 1px rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;color:rgba(250,250,250,.85)}
+.sc1 svg{width:22px;height:22px}
+.sc1 em{position:absolute;left:8px;bottom:6px;font-style:normal;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,250,.6)}
+.fl{position:relative;align-self:stretch}
+.fl i{position:absolute;left:0;right:0;height:1px;background-image:linear-gradient(90deg,rgba(242,196,179,.5) 0 50%,rgba(242,196,179,0) 50% 100%);background-size:8px 1px;animation:dash 1s linear infinite;transform-origin:0 50%}
+.fl i:nth-child(1){top:50%;transform:rotate(-16deg)}.fl i:nth-child(2){top:50%;transform:rotate(16deg)}
+.coh2{display:flex;flex-direction:column;gap:clamp(8px,1.4vh,14px)}
+.coh2>div{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:12px;border:1px solid rgba(0,0,0,.6);background:var(--key);box-shadow:var(--keysh)}
+.coh2 b{flex:1;font-size:clamp(14px,1.1vw,18px);font-weight:600;color:var(--tx)}
+#sp .out .fk{width:clamp(180px,min(21vw,38vh),340px);aspect-ratio:1}
+@media (max-width:980px){.ps{grid-template-columns:minmax(0,1fr)}.prow{grid-template-columns:minmax(0,1fr)}}
+@media (max-height:720px){#sp .node{padding:12px 16px;gap:8px}.steps .chip{padding:4px 10px}}
+
 </style>
 </head>
 <body>
@@ -821,12 +846,45 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
   </div></div>
 </section>
 
+<!-- ============ POST-SHOOT (after insights) ============ -->
+<section class="s" id="sp" data-label="Ads added after the shoot">
+  <div class="glow" style="left:-12vw;top:-26vh;width:58vw;height:72vh"></div>
+  <div class="sc"><div class="in">
+    <div class="head">
+      <div class="eb" data-r style="--i:0"><b>03</b>Branded content, after the shoot</div>
+      <h2 class="h" data-r style="--i:1">Shoot once. Add the brand later.</h2>
+    </div>
+    <div class="ps">
+      <div class="psl">
+        <div class="node" data-r style="--i:2">
+          <div class="prow"><b>Today</b><div class="steps"><span class="chip lk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>Brand decided</span><svg class="ar" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg><span class="chip">Shoot</span><svg class="ar" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg><span class="chip">Edit</span><svg class="ar" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg><span class="chip">Release</span></div></div>
+          <div class="prow hi"><b>With Flicks</b><div class="steps"><span class="chip">Shoot</span><svg class="ar" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg><span class="chip">Edit</span><svg class="ar" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg><span class="chip on">Brand joins</span><svg class="ar" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg><span class="chip">Release</span></div></div>
+        </div>
+        <div class="node" data-r style="--i:3">
+          <div class="who"><span>Same scene</span>A different brand per cohort</div>
+          <div class="fork">
+            <div class="sc1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 7l8 5-8 5V7z"/></svg><em>One scene</em></div>
+            <div class="fl"><i></i><i></i></div>
+            <div class="coh2">
+              <div><span class="chip">Cohort 1</span><b>Brand A</b><u class="v3 st"><i></i><i></i><i></i></u></div>
+              <div><span class="chip">Cohort 2</span><b>Brand B</b><u class="v3 st"><i></i><i></i><i></i></u></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="out" data-r style="--i:4">
+        <div class="dev" style="padding:8px;border-radius:26px"><div class="fk" data-flick="post"><div class="wait">Flick to be added</div></div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
 <!-- ============ 05 ADVERTISERS ============ -->
 <section class="s" id="s5" data-label="Commerce and new advertisers">
   <div class="glow" style="left:-10vw;top:-24vh;width:58vw;height:70vh"></div>
   <div class="sc"><div class="in">
     <div class="head">
-      <div class="eb" data-r style="--i:0"><b>03</b>Commerce and new advertisers</div>
+      <div class="eb" data-r style="--i:0"><b>04</b>Commerce and new advertisers</div>
       <h2 class="h" data-r style="--i:1">More advertisers. More from each one.</h2>
     </div>
     <div class="adv">
@@ -994,6 +1052,7 @@ var FLICKS = {
   lips:  {id:"onflg2", r:1},
   chair: {id:"c5htms", r:1},
   neck:  {id:"ikutv6", r:9/16},
+  post:  null,   // the Flick for the "after the shoot" slide. Put {id:"..."} for an embed code or {tag:"https://.../ad.js"} for an ad tag.
   reva:  {tag:"https://flicks.flamapp.live/y1zcql/ad.js", r:1, muteTop:true,                 // Reva Diamonds, tag and settings as the JioHotstar demo runs it
           pre:'<script>var clickTag = "https://www.revabypng.com/";<\/script>\n<script>window.AD_CONFIG=window.AD_CONFIG||{};window.AD_CONFIG.dsp="dv360_studio";window.AD_CONFIG.publisherInfo={"publisher_id":"${PUBLISHER_ID}","adsxt_publisher_id":"${ADSXT_PUBLISHER_ID}","universal_site_id":"${UNIVERSAL_SITE_ID}","source_url":"${SOURCE_URL}","source_url_enc":"${SOURCE_URL_ENC}","adsxt_ad_system_domain":"${ADSXT_AD_SYSTEM_DOMAIN}"};window.AD_CONFIG.clickTracker={"mode":"clicktag","template":""};<\/script>\n'},
   merc:  {tag:"https://native-ads.appless.workers.dev/6a9bc07393e71f3ec9b12c81_i3pdeq/ad.js", r:1},
@@ -1113,7 +1172,7 @@ function mountDemo(){
 function dropDemo(){ if(demoFr){ try{ demoFr.src = "about:blank"; }catch(e){} demoFr.remove(); demoFr = null; } }
 var fullFr = null;
 function openFull(){ dropDemo(); fullFr = document.createElement("iframe"); fullFr.title = "JioHotstar demo"; fullFr.allow = "autoplay; fullscreen; encrypted-media"; fullFr.src = DEMO + demoHash; $("#full").appendChild(fullFr); $("#full").classList.add("on"); }
-function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===6) mountDemo(); }
+function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===7) mountDemo(); }
 
 /* ---------- slide 7: revenue example ---------- */
 var M = JSON.parse(JSON.stringify(MATH)), firstMath = true;
@@ -1158,7 +1217,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===8) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===9) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -1181,15 +1240,15 @@ function enter(i){
   var my = ++token, sl = slides[i];
   setTimeout(function(){ if(my!==token || document.hidden) return;
     $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
-    if(i===5) showCat(true);
+    if(i===6) showCat(true);
     if(i===1) mountBench();
-    if(i===6 && !fullFr) mountDemo();
+    if(i===7 && !fullFr) mountDemo();
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
-  if(i===5) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===8){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===8) paint(); },650); }
+  if(i===6) showCat(false);                       // preload nothing, but keep the tile state right
+  if(i===9){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===9) paint(); },650); }
 }
-function leave(i){ if(i<0) return; silence(slides[i]); if(i===6){ dropDemo(); } }
+function leave(i){ if(i<0) return; silence(slides[i]); if(i===7){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
   var old = cur; cur = n; leave(old);

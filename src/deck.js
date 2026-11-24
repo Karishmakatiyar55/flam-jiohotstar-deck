@@ -16,6 +16,7 @@ var FLICKS = {
   lips:  {id:"onflg2", r:1},
   chair: {id:"c5htms", r:1},
   neck:  {id:"ikutv6", r:9/16},
+  post:  null,   // the Flick for the "after the shoot" slide. Put {id:"..."} for an embed code or {tag:"https://.../ad.js"} for an ad tag.
   reva:  {tag:"https://flicks.flamapp.live/y1zcql/ad.js", r:1, muteTop:true,                 // Reva Diamonds, tag and settings as the JioHotstar demo runs it
           pre:'<script>var clickTag = "https://www.revabypng.com/";<\/script>\n<script>window.AD_CONFIG=window.AD_CONFIG||{};window.AD_CONFIG.dsp="dv360_studio";window.AD_CONFIG.publisherInfo={"publisher_id":"${PUBLISHER_ID}","adsxt_publisher_id":"${ADSXT_PUBLISHER_ID}","universal_site_id":"${UNIVERSAL_SITE_ID}","source_url":"${SOURCE_URL}","source_url_enc":"${SOURCE_URL_ENC}","adsxt_ad_system_domain":"${ADSXT_AD_SYSTEM_DOMAIN}"};window.AD_CONFIG.clickTracker={"mode":"clicktag","template":""};<\/script>\n'},
   merc:  {tag:"https://native-ads.appless.workers.dev/6a9bc07393e71f3ec9b12c81_i3pdeq/ad.js", r:1},
@@ -135,7 +136,7 @@ function mountDemo(){
 function dropDemo(){ if(demoFr){ try{ demoFr.src = "about:blank"; }catch(e){} demoFr.remove(); demoFr = null; } }
 var fullFr = null;
 function openFull(){ dropDemo(); fullFr = document.createElement("iframe"); fullFr.title = "JioHotstar demo"; fullFr.allow = "autoplay; fullscreen; encrypted-media"; fullFr.src = DEMO + demoHash; $("#full").appendChild(fullFr); $("#full").classList.add("on"); }
-function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===6) mountDemo(); }
+function closeFull(){ if(!fullFr) return; try{ fullFr.src = "about:blank"; }catch(e){} fullFr.remove(); fullFr = null; $("#full").classList.remove("on"); if(cur===7) mountDemo(); }
 
 /* ---------- slide 7: revenue example ---------- */
 var M = JSON.parse(JSON.stringify(MATH)), firstMath = true;
@@ -180,7 +181,7 @@ function paint(){
   var seg = function(vals,cls){ return vals.map(function(v){ return '<i class="'+cls+'" style="width:'+(c.W>0?v/c.W*100:0)+'%"></i>'; }).join(""); };
   $("#stk0").innerHTML = seg(c.today,"o"); $("#stk1").innerHTML = seg(c.today,"o")+seg(c.add,"n");
   $("#tot0").textContent = money(c.T); $("#tot1").textContent = money(c.W);
-  if(cur===8) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
+  if(cur===9) tween(idx); else { ixNow = 100; $("#ixz").textContent = "100"; }
   return idx;
 }
 function wireMath(){
@@ -203,15 +204,15 @@ function enter(i){
   var my = ++token, sl = slides[i];
   setTimeout(function(){ if(my!==token || document.hidden) return;
     $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
-    if(i===5) showCat(true);
+    if(i===6) showCat(true);
     if(i===1) mountBench();
-    if(i===6 && !fullFr) mountDemo();
+    if(i===7 && !fullFr) mountDemo();
   }, 420);
   if(i===0) rotStart(); else clearInterval(rotT);
-  if(i===5) showCat(false);                       // preload nothing, but keep the tile state right
-  if(i===8){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===8) paint(); },650); }
+  if(i===6) showCat(false);                       // preload nothing, but keep the tile state right
+  if(i===9){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===9) paint(); },650); }
 }
-function leave(i){ if(i<0) return; silence(slides[i]); if(i===6){ dropDemo(); } }
+function leave(i){ if(i<0) return; silence(slides[i]); if(i===7){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
   var old = cur; cur = n; leave(old);
