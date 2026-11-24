@@ -206,22 +206,31 @@ function rotStart(){ clearInterval(rotT); var el = $("#rot"); rotI = 0; el.style
     if(rotI===2) setTimeout(function(){ el.style.transition = "none"; el.style.transform = "translateY(0)"; rotI = 0; },800); },2600); }
 
 /* ---------- navigation ---------- */
+// Fill a slide's frames (Flicks, bench, demo) if they are not there yet.
+function fill(i){
+  var sl = slides[i]; if(!sl) return;
+  $$(".fk[data-flick]",sl).forEach(function(el){ if(!$("iframe",el)) mountFlick(el, el.dataset.flick); });
+  if(i===6 && !$("#catFk iframe")) showCat(true);
+  if(i===1 && !$("#bench iframe")) mountBench();
+  if(i===DEMO_I && !fullFr && !demoFr) mountDemo();
+}
+// Take every frame down except those of the slides listed. Removing a frame is the only sure mute.
+function clearExcept(keep){
+  slides.forEach(function(sl,i){ if(keep.indexOf(i)>=0) return; silence(sl); if(i===DEMO_I) dropDemo(); });
+}
 function enter(i){
-  var my = ++token, sl = slides[i];
-  setTimeout(function(){ if(my!==token || document.hidden) return;
-    $$(".fk[data-flick]",sl).forEach(function(el){ mountFlick(el, el.dataset.flick); });
-    if(i===6) showCat(true);
-    if(i===1) mountBench();
-    if(i===DEMO_I && !fullFr) mountDemo();
-  }, 420);
+  var my = ++token;
+  setTimeout(function(){ if(my!==token || document.hidden) return; fill(i); }, 380);
+  // load the next slide's frames ahead of time, out of sight, so they are ready when it opens.
+  // Nothing in them has been tapped, so they are silent; they are removed if you go elsewhere.
+  setTimeout(function(){ if(my!==token || document.hidden) return; fill(i+1); }, 1400);
   if(i===0) rotStart(); else clearInterval(rotT);
-  if(i===6) showCat(false);                       // preload nothing, but keep the tile state right
   if(i===MATH_I){ ixNow = 100; $("#ixz").textContent = "100"; setTimeout(function(){ if(cur===MATH_I) paint(); },650); }
 }
 function leave(i){ if(i<0) return; silence(slides[i]); if(i===DEMO_I){ dropDemo(); } }
 function go(n,first){
   n = Math.max(0,Math.min(N-1,n)); if(n===cur) return;
-  var old = cur; cur = n; leave(old);
+  var old = cur; cur = n; leave(old); clearExcept([n]);
   slides.forEach(function(s,i){ s.classList.toggle("on", i===n); if(i!==n) s.classList.remove("go"); });
   requestAnimationFrame(function(){ requestAnimationFrame(function(){ slides[n].classList.add("go"); }); });
   $("#counter").textContent = ("0"+(n+1)).slice(-2)+" / "+("0"+N).slice(-2);
@@ -254,10 +263,10 @@ function buildChrome(){
   addEventListener("touchend",function(e){ if(fullFr || (tt && tt.closest && tt.closest("input,.run,table"))) return; var dx = e.changedTouches[0].clientX-tx, dy = e.changedTouches[0].clientY-ty; if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.6) go(cur+(dx<0?1:-1)); },{passive:true});
   addEventListener("hashchange",function(){ var h = parseInt(location.hash.slice(1),10); if(h>=1 && h<=N) go(h-1); });
   // leaving the tab: take every Flick down so nothing keeps playing; bring the slide's Flicks back on return
-  document.addEventListener("visibilitychange",function(){ if(document.hidden){ token++; if(cur>=0) silence(slides[cur]); } else if(cur>=0){ enter(cur); } });
+  document.addEventListener("visibilitychange",function(){ if(document.hidden){ token++; clearExcept([]); } else if(cur>=0){ enter(cur); } });
 }
 
-buildChrome(); buildCats(); buildRun(); if($("#mrows")) wireMath();
+buildChrome(); buildCats(); showCat(false); buildRun(); if($("#mrows")) wireMath();
 try{ $("#endWave").src = $("#s1 .wave").src; }catch(e){}
 var h0 = parseInt(location.hash.slice(1),10);
 go(h0>=1 && h0<=N ? h0-1 : 0, true);
