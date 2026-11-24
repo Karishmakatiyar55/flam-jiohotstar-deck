@@ -5,7 +5,7 @@ The Flam × JioHotstar pitch deck as one self-contained static page (`index.html
 ## Slides (10)
 1. Hook, with a Flick in a pre-roll mock
 2. Benchmark: IFL Bench, cropped to the two comparison units
-3. Four gaps: commerce, ad slots, video insights, SMB advertisers
+3. Where the growth is: interactive video ad slots, branded content, contextual ads
 4. Same episode, more to sell (formats on top of what is sold today)
 5. Video insights, made interactive
 6. Commerce and new advertisers

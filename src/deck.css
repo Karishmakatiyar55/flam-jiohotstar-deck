@@ -568,3 +568,6 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 .fk.bench{width:100%;aspect-ratio:1256/882;border-radius:clamp(14px,1.3vw,22px);background:#0b0705}
 .fk.bench iframe{right:auto;bottom:auto}
 @media (max-width:980px){#sb .in{flex-direction:column;align-items:stretch}.bl{max-width:none}.bdev{width:100%}}
+
+.cols.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:980px){.cols.c3{grid-template-columns:minmax(0,1fr)}}

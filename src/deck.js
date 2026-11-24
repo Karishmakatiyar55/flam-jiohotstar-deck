@@ -5,10 +5,9 @@ var DEMO = "https://flicks-jiohotstar-demo-aifr.vercel.app/";   // the live JioH
 var DEMO_SLOTS = 25;                                             // placements in the demo (big number on the demo slide)
 // Run sheet on the demo slide: one group per gap. Each item opens that screen of the demo.
 var FLOWS = [
-  ["Commerce", [["Pre-roll with companion","#/watch/heartbeat"],["Shop the look in the player","#/watch/heartbeat"],["Shop the look on Home","#/home"]]],
-  ["Limited ad slots", [["Pause ad","#/watch/heartbeat"],["Masthead and billboards","#/home"],["Sponsored search","#/search/cricket"]]],
-  ["Video insights", [["Flick inside a micro-drama","#/reel/blankcheque"],["Shop the look in Tadka","#/reel/redsilk"]]],
-  ["New advertisers", [["Sponsored video in Tadka","#/tadka"],["Movies and Sports banners","#/movies"]]]
+  ["Interactive video ad slots", [["Pre-roll with companion","#/watch/heartbeat"],["Pause ad","#/watch/heartbeat"],["Masthead and billboards","#/home"],["Sponsored search","#/search/cricket"]]],
+  ["Branded content", [["Flick inside a micro-drama","#/reel/blankcheque"],["Sponsored video in Tadka","#/tadka"]]],
+  ["Contextual ads", [["Shop the look in the player","#/watch/heartbeat"],["Shop the look on Home","#/home"],["Shop the look in Tadka","#/reel/redsilk"]]]
 ];
 // Saved Flicks (flicks-ad-tags). id = flam-embed code, tag = ad tag script, r = width / height.
 var FLICKS = {

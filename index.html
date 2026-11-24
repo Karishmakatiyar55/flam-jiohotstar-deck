@@ -581,6 +581,9 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
 .fk.bench iframe{right:auto;bottom:auto}
 @media (max-width:980px){#sb .in{flex-direction:column;align-items:stretch}.bl{max-width:none}.bdev{width:100%}}
 
+.cols.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:980px){.cols.c3{grid-template-columns:minmax(0,1fr)}}
+
 </style>
 </head>
 <body>
@@ -643,11 +646,11 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
   <div class="sc"><div class="in">
     <div class="head">
       <div class="eb" data-r style="--i:0">Ads on JioHotstar today</div>
-      <h2 class="h" data-r style="--i:1">Brand money is strong. Four places to grow the rest.</h2>
+      <h2 class="h" data-r style="--i:1">Brand money is strong. Three places to grow the rest.</h2>
     </div>
-    <div class="cols">
+    <div class="cols c3">
       <div class="col" data-r style="--i:3">
-        <div class="tag"><span>01</span>Commerce</div>
+        <div class="tag"><span>01</span>Interactive video ad slots</div>
         <div class="stat">₹7-8K<small>Cr</small></div>
         <div class="cap">ad revenue, nearly all of it branding</div>
         <div class="viz">
@@ -655,39 +658,28 @@ input[type=range]::-webkit-slider-thumb{width:18px;height:18px;border:1px solid 
           <div class="bar"><span>Performance</span><div class="trk"><i style="width:7%;background:rgba(242,196,179,.4)"></i></div></div>
         </div>
         <div class="ghead">Brand money is here. Performance money is next.</div>
-        <div class="gline">Commerce is being added, so performance campaigns can grow too.</div>
+        <div class="gline">Interactive slots let the same break earn on swaps and clicks too.</div>
       </div>
       <div class="col" data-r style="--i:4">
-        <div class="tag"><span>02</span>Ad slots</div>
-        <div class="stat">2-3</div>
-        <div class="cap">mid-rolls fit in a 30-minute episode</div>
+        <div class="tag"><span>02</span>Branded content</div>
+        <div class="stat">In-show</div>
+        <div class="cap">a brand's products, explorable inside the content</div>
         <div class="viz">
-          <div class="ep"><i style="left:30%"></i><i style="left:58%"></i><i style="left:84%"></i></div>
-          <div class="eplab"><span>0:00</span><span>30:00</span></div>
+          <div class="flow"><span class="chip">Sponsor tier</span><span class="dash"></span><span class="chip on">Products in the show</span></div>
         </div>
-        <div class="ghead">Slots run out before demand does.</div>
-        <div class="gline">Sold-out cohorts, like women in Mumbai, turn advertisers away.</div>
+        <div class="ghead">Sponsorship viewers can explore.</div>
+        <div class="gline">A commerce partner tier, beside title and co-powered.</div>
       </div>
       <div class="col" data-r style="--i:5">
-        <div class="tag"><span>03</span>Video insights</div>
-        <div class="stat">Flicks</div>
-        <div class="cap">turn each tagged scene into an interactive unit</div>
+        <div class="tag"><span>03</span>Contextual ads</div>
+        <div class="stat">Per scene</div>
+        <div class="cap">ads matched to what your video insights see</div>
         <div class="viz">
           <div class="flow seq"><span class="chip">Character</span><span class="chip">Setting</span><span class="chip">Product</span></div>
           <div class="flow"><span class="dash"></span><span class="chip on">Shoppable scene</span></div>
         </div>
         <div class="ghead">Scene insight becomes a shoppable scene.</div>
         <div class="gline">A wedding scene with jewellery on screen: viewers swap it and shop it.</div>
-      </div>
-      <div class="col" data-r style="--i:6">
-        <div class="tag"><span>04</span>SMB advertisers</div>
-        <div class="stat">2<small>lakh</small></div>
-        <div class="cap">SMBs needed for self-serve to matter</div>
-        <div class="viz">
-          <div class="flow"><span class="chip on">₹10-50K a campaign</span><span class="dash"></span><span class="chip">No video</span></div>
-        </div>
-        <div class="ghead">Small brands can't make video.</div>
-        <div class="gline">They buy performance, not brand films.</div>
       </div>
     </div>
   </div></div>
@@ -975,10 +967,9 @@ var DEMO = "https://flicks-jiohotstar-demo-aifr.vercel.app/";   // the live JioH
 var DEMO_SLOTS = 25;                                             // placements in the demo (big number on the demo slide)
 // Run sheet on the demo slide: one group per gap. Each item opens that screen of the demo.
 var FLOWS = [
-  ["Commerce", [["Pre-roll with companion","#/watch/heartbeat"],["Shop the look in the player","#/watch/heartbeat"],["Shop the look on Home","#/home"]]],
-  ["Limited ad slots", [["Pause ad","#/watch/heartbeat"],["Masthead and billboards","#/home"],["Sponsored search","#/search/cricket"]]],
-  ["Video insights", [["Flick inside a micro-drama","#/reel/blankcheque"],["Shop the look in Tadka","#/reel/redsilk"]]],
-  ["New advertisers", [["Sponsored video in Tadka","#/tadka"],["Movies and Sports banners","#/movies"]]]
+  ["Interactive video ad slots", [["Pre-roll with companion","#/watch/heartbeat"],["Pause ad","#/watch/heartbeat"],["Masthead and billboards","#/home"],["Sponsored search","#/search/cricket"]]],
+  ["Branded content", [["Flick inside a micro-drama","#/reel/blankcheque"],["Sponsored video in Tadka","#/tadka"]]],
+  ["Contextual ads", [["Shop the look in the player","#/watch/heartbeat"],["Shop the look on Home","#/home"],["Shop the look in Tadka","#/reel/redsilk"]]]
 ];
 // Saved Flicks (flicks-ad-tags). id = flam-embed code, tag = ad tag script, r = width / height.
 var FLICKS = {
